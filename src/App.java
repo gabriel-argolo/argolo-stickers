@@ -1,5 +1,8 @@
 //Imports
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -30,19 +33,28 @@ class App {
 		String body = response.body();
 		System.out.println(body);
 		System.out.println();
-		
+
 		//extrair dados, Titulo, Poster e Classificação
 		//PARSEAR OS DADOS
 		JsonParser parser= new JsonParser();
 		List<Map<String,String>> listaFilmes = parser.parse(body);
 
 		//Exibir e manipular os dados
-
+		var geradora = new GeradoraDeFigurinhas();
 		for (Map<String, String> filme : listaFilmes) {
-			System.out.println("\u001b[1mTitulo: \u001b[m" +(filme.get("title")));
-			System.out.println("\u001b[1mPoster: \u001b[m" +(filme.get("image")));
-			System.out.println("\u001b[1m\u001b[45mClassificação: " +filme.get(("imDbRating"))+"\u001b[m");
+			String urlImagem = filme.get("image");
+			String titulo = filme.get("title");
+			try {
+				InputStream inputStream = new URL(urlImagem).openStream();
+				String nomeArquivo = "saida/"+titulo+".png";
+				geradora.cria(inputStream, nomeArquivo);
 
+				System.out.println("\u001b[1mTitulo: \u001b[m" +titulo);
+				System.out.println("\u001b[1mPoster: \u001b[m" +(filme.get("image")));
+				System.out.println("\u001b[1m\u001b[45mClassificação: " +filme.get(("imDbRating"))+"\u001b[m");
+			}catch (FileNotFoundException f) {
+				System.out.println("Imagem Nao Encontrada!");
+			}
 			double stars=0;
 
 			try {

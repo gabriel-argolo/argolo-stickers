@@ -12,9 +12,9 @@ public class Manipulador {
 
 	}
 
-//	public static void main(String args[]) throws IOException{
-//		System.out.println("**********Teste usando arquivo de propriedades**********");
-//		Properties prop = getProp();
-//		System.out.println(prop.getProperty("prop.key"));
-//	}
+	//	public static void main(String args[]) throws IOException{
+	//		System.out.println("**********Teste usando arquivo de propriedades**********");
+	//		Properties prop = getProp();
+	//		System.out.println(prop.getProperty("prop.key"));
+	//	}
 }
