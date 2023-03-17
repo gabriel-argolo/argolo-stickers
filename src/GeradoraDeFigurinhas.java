@@ -18,7 +18,8 @@ public class GeradoraDeFigurinhas {
 		//nova imagem em memora com transparencia e com tamamho novo
 		int largura = imagemOriginal.getWidth();
 		int altura = imagemOriginal.getHeight();
-		int novaAltura = altura+200;
+		System.out.println(largura);
+		int novaAltura = altura+300;
 
 		BufferedImage novaImagem = new BufferedImage(largura, novaAltura, BufferedImage.TRANSLUCENT);
 		//copiar a imagem original pra novo imagem (Em memoria)
@@ -26,21 +27,23 @@ public class GeradoraDeFigurinhas {
 		graphics.drawImage(imagemOriginal,0,0,null);
 
 		//configurar fonte
-		var fonte = new Font(Font.SANS_SERIF, Font.BOLD, 64);
+		var fonte = new Font("impact", Font.ITALIC, 250);
 		graphics.setFont(fonte);
 		graphics.setColor(Color.YELLOW);
-		
+
 		//escrever uma frase na nova imagem
-		
-		
-		
-		graphics.drawString("TOPZERA", 0, novaAltura-100);
+		var texto = "Topzera";
+		var larguraTexto = graphics.getFontMetrics().stringWidth(texto);
+		var posicaoHorizontal = ((novaImagem.getWidth())/2) - (larguraTexto/2);
+		graphics.drawString(texto, posicaoHorizontal, novaAltura-50);
 
 		//escrever a nova imagem em um arquivo
 		ImageIO.write(novaImagem,"png", new File(nomeArquivo));
 	}
+
 	//	public static void main(String[] args) throws Exception {
 	//		var geradora = new GeradoraDeFigurinhas();
 	//		geradora.cria();
 	//	}
+
 }

@@ -42,7 +42,8 @@ class App {
 		//Exibir e manipular os dados
 		var geradora = new GeradoraDeFigurinhas();
 		for (Map<String, String> filme : listaFilmes) {
-			String urlImagem = filme.get("image");
+			String padrao = "._(.+)";
+			String urlImagem = filme.get("image").replaceAll(padrao, "");
 			String titulo = filme.get("title");
 			try {
 				InputStream inputStream = new URL(urlImagem).openStream();
