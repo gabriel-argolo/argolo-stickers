@@ -11,14 +11,11 @@ public class GeradoraDeFigurinhas {
 
 	public	void cria(InputStream inputStream, String nomeArquivo) throws Exception {
 		//leitura da imagem
-		//InputStream inputStream = new URL("https://m.media-amazon.com/images/M/MV5BZGUzYTI3M2EtZmM0Yy00NGUyLWI4ODEtN2Q3ZGJlYzhhZjU3XkEyXkFqcGdeQXVyNTM0OTY1OQ@@").openStream();
-
 		BufferedImage imagemOriginal = ImageIO.read(inputStream);
 
 		//nova imagem em memora com transparencia e com tamamho novo
 		int largura = imagemOriginal.getWidth();
 		int altura = imagemOriginal.getHeight();
-		System.out.println(largura);
 		int novaAltura = altura+300;
 
 		BufferedImage novaImagem = new BufferedImage(largura, novaAltura, BufferedImage.TRANSLUCENT);
@@ -40,10 +37,5 @@ public class GeradoraDeFigurinhas {
 		//escrever a nova imagem em um arquivo
 		ImageIO.write(novaImagem,"png", new File(nomeArquivo));
 	}
-
-	//	public static void main(String[] args) throws Exception {
-	//		var geradora = new GeradoraDeFigurinhas();
-	//		geradora.cria();
-	//	}
 
 }

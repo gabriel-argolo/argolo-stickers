@@ -17,7 +17,7 @@ class App {
 		//acessar endereço da API, fazer a conexao HTTP e buscar os top 250 filmes;
 		String url = Manipulador.getProp().getProperty("prop.key");
 		HttpClient client = HttpClient.newHttpClient();
-		client.newBuilder();
+		HttpClient.newBuilder();
 		URI endereco = URI.create(url);
 
 		String umEstrela = "\uD83D\uDC99";
