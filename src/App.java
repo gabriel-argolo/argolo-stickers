@@ -7,6 +7,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
@@ -47,7 +49,8 @@ class App {
 			String titulo = filme.get("title");
 			try {
 				InputStream inputStream = new URL(urlImagem).openStream();
-				String nomeArquivo = "saida/"+titulo+".png";
+				Files.createDirectories(Paths.get("/saida"));
+				String nomeArquivo = "/saida/"+titulo+".png";
 				geradora.cria(inputStream, nomeArquivo);
 
 				System.out.println("\u001b[1mTitulo: \u001b[m" +titulo);
