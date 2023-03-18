@@ -50,7 +50,7 @@ class App {
 			try {
 				InputStream inputStream = new URL(urlImagem).openStream();
 				Files.createDirectories(Paths.get("/saida"));
-				String nomeArquivo = "/saida/"+titulo+".png";
+				String nomeArquivo = "saida/"+titulo+".png";
 				geradora.cria(inputStream, nomeArquivo);
 
 				System.out.println("\u001b[1mTitulo: \u001b[m" +titulo);
@@ -59,6 +59,7 @@ class App {
 			}catch (FileNotFoundException f) {
 				System.out.println("Imagem Nao Encontrada!");
 			}
+			
 			double stars=0;
 
 			try {
