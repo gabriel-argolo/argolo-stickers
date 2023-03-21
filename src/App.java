@@ -47,9 +47,10 @@ class App {
 			String padrao = "._(.+)";
 			String urlImagem = filme.get("image").replaceAll(padrao, "");
 			String titulo = filme.get("title");
-			try {
+			
+			try {	
 				InputStream inputStream = new URL(urlImagem).openStream();
-				Files.createDirectories(Paths.get("/saida"));
+				Files.createDirectories(Paths.get("./saida"));
 				String nomeArquivo = "saida/"+titulo+".png";
 				geradora.cria(inputStream, nomeArquivo);
 
